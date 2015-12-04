@@ -11,9 +11,17 @@ public class Day4Main {
     public static void main(String[] args) {
         int max = 1000000000;
 
+        boolean foundFive = false;
         for (int i = 0; i <= max; i++) {
-            if(getMD5Hash(input + i).startsWith("000000")){
-                System.out.println("Lowest number: " + i);
+            String md5Hash = getMD5Hash(input + i);
+
+            if(!foundFive && md5Hash.startsWith("00000")){
+                System.out.println("Lowest number with five 0s: " + i);
+                foundFive = true;
+            }
+
+            if(md5Hash.startsWith("000000")){
+                System.out.println("Lowest number with six 0s: " + i);
                 break;
             }
         }
